@@ -1,10 +1,13 @@
 <template>
-  <div class="froth">
-    <div v-for=" in 5" class="foam"></div>
+  <div class="froth" :style="{ backgroundColor: currentCreamer.color }">
+    <div v-for="i in 5" :key="i" class="foam"></div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { currentCreamer } from "../stores/beverage";
+</script>
+
 <style lang="scss" scoped>
 .froth {
   overflow: visible;
@@ -17,7 +20,7 @@
 }
 .foam {
   display: block;
-  background: #e4e0d2;
+  background: v-bind('currentCreamer.color');
   border-radius: 30px;
   height: 40px;
   width: 40px;
